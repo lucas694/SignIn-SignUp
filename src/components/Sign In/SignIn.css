@@ -1,0 +1,41 @@
+.SignInContainer{
+    @apply flex flex-col w-[80%] h-full py-4 justify-between
+    lg:py-14
+}
+.HeaderSec{
+    @apply flex flex-row justify-between w-full items-center
+}
+.Btn-Back{
+    @apply bg-transparent border-none cursor-pointer text-black flex flex-row items-center px-2 py-1
+    transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110
+}
+.ArrowLeftIcon{
+    @apply text-[#553BF1] text-2xl mr-2
+}
+
+.footer{
+    @apply flex w-full justify-center
+}
+
+.FormContent{
+    @apply flex flex-col w-full mb-[2em] mt-10
+    lg:mb-[12em] lg:mt-0
+}
+.FormTittle{
+    @apply text-3xl font-bold text-center
+    lg:text-4xl lg:text-start
+}
+.BtnSec{
+    @apply flex flex-col w-full justify-between mt-6 mb-6 space-y-4
+    lg:flex-row lg:mt-8 lg:mb-8 lg:space-y-0
+}
+.FormSections{
+    @apply flex flex-col w-full justify-between
+    lg:flex-row
+}
+.SignInForm{
+    @apply flex flex-col w-full mt-10
+}
+.error{
+    @apply text-red-500 bg-[#f8d7da] border-[1px] border-solid border-[#f5c6cb] p-[5px] rounded-[5px] text-center
+}

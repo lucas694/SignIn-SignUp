@@ -1,0 +1,33 @@
+.Btn-Google{
+    @apply bg-gradient-to-r from-[#F6A742] to-[#DF638B]
+    text-white cursor-pointer rounded-full font-semibold border-none text-sm w-full px-10 py-3
+    flex flex-row items-center
+    lg:text-base lg:px-10 lg:py-3 lg:w-auto
+    transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gradient-to-l duration-300
+
+
+}
+
+.GoogleIcon{
+    @apply text-white text-xl mr-2
+}
+
+.Btn-Facebook{
+    @apply bg-gray-200
+    text-black cursor-pointer rounded-full font-semibold border-none text-sm w-full  px-10 py-3
+    flex flex-row items-center
+    lg:text-base lg:px-10 lg:py-3 lg:w-auto
+    transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-blue-200 duration-300
+
+}
+.FacebookIcon{
+    @apply text-blue-500 text-xl mr-2
+}
+
+.Btn-SignIn{
+    @apply bg-gradient-to-r from-[#893BE6] to-[#F19065]
+    text-white cursor-pointer rounded-full font-semibold border-none text-sm w-full px-10 py-3 text-center
+    lg:text-base lg:px-10 lg:py-3 lg:w-auto
+    transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gradient-to-l duration-300
+}
+
