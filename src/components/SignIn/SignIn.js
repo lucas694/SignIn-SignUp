@@ -25,6 +25,10 @@ const SignIn = () => {
       setError("Preencha sua Senha")
       return
     }
+    if(password.length < 6){
+      setError("A senha Precisa ter ao menos 6 Dígitos")
+      return
+    }
   }
   return(
     <div className={"SignInContainer"}>
