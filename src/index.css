@@ -30,5 +30,8 @@ input, textarea{
     lg:w-[80%] lg:text-base
 
 }
+.InputSignIn{
+    @apply lg:w-full
+}
 
 

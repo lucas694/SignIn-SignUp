@@ -1,12 +1,14 @@
-import "./SignIn.css"
+import "./SignUp.css"
 import { TfiArrowCircleLeft } from "react-icons/tfi";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import BtnVariant from "../Buttons/Btn-Variant";
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 
-const SignIn = () => {
+
+const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,6 +25,26 @@ const SignIn = () => {
       email,
       password,
     }
+    if(name == ""){
+      setError("Escreva seu nome")
+      return
+    }
+    if(email == ""){
+      setError("Preencha seu E-mail")
+      return
+    }
+    if(password == ""){
+      setError("Preencha sua Senha")
+      return
+    }
+    if(password.length < 6){
+      setError("A senha Precisa ter ao menos 6 Dígitos")
+      return
+    }
+    if(confirmPassword == ""){
+      setError("Confirme sua Senha")
+      return
+    }
     if(password !== confirmPassword){
       setError("As senhas precisam ser iguais")
       return
@@ -31,28 +53,30 @@ const SignIn = () => {
   }
 
   return(
-    <div className={"SignInContainer"}>
+    <div className={"SignUpContainer"}>
       <div className={"HeaderSec"}>
-        <button className={"Btn-Back"}>
-          <TfiArrowCircleLeft className={"ArrowLeftIcon"}/>Back
-        </button>
-        <p>I have an account! <a>Sign Up</a></p>
+        <Link to={"/SignIn"}>
+          <button className={"Btn-Back"}>
+            <TfiArrowCircleLeft className={"ArrowLeftIcon"}/>Back
+          </button>
+        </Link>
+        <p>I have an account! <Link to={"/SignIn"}><a>Sign In</a></Link></p>
       </div>
 
       <div className={"FormContent"}>
         <h1 className={"FormTittle"}>Create your Account</h1>
         <div className={"BtnSec"}>
           <BtnVariant className={"Btn-Google"}
-                      btnText={"Sign In with Google"}
+                      btnText={"Sign Up with Google"}
                       btnIcon={<FaGoogle className={"GoogleIcon"}/>}
           />
           <BtnVariant className={"Btn-Facebook"}
-                      btnText={"Sign In with Facebook"}
+                      btnText={"Sign Up with Facebook"}
                       btnIcon={<FaFacebook className={"FacebookIcon"}/>}
           />
         </div>
-        <p>Or sign in with login and password</p>
-        <form className={"SignInForm"} onSubmit={handleSubmit}>
+        <p>Or sign up with login and password</p>
+        <form className={"SignUpForm"} onSubmit={handleSubmit}>
           <div className={"FormSections"}>
             <label>
               <span>Name:</span>
@@ -98,7 +122,8 @@ const SignIn = () => {
           {error && <p className={"error"}>{error}</p>}
           <div className={"BtnSec"}>
             <BtnVariant className={"Btn-SignIn"}
-                        btnText={"Sign In"}/>
+                        btnText={"Sign In"}
+                        onClick={handleSubmit}/>
           </div>
         </form>
       </div>
@@ -107,4 +132,4 @@ const SignIn = () => {
       </footer>
     </div>
   )
-}; export default SignIn;
+}; export default SignUp;

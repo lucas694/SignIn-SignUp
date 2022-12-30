@@ -1,9 +1,9 @@
 import "./Login.css"
 import loginImg from "../assets/login_img.png"
-import SignIn from "./Sign In/SignIn";
+import SignUp from "./Sign In/SignUp";
 
 
-const Login = () => {
+const Login = (props) => {
   return(
     <div className={"LoginContainer"}>
       <div className={"ContentLeft"}>
@@ -15,7 +15,7 @@ const Login = () => {
         </div>
       </div>
       <div className={"ContentRight"}>
-        <SignIn />
+        {props.LoginPage}
       </div>
 
     </div>
