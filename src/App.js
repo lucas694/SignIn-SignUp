@@ -3,6 +3,7 @@ import Login from "./components/Login";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import SignUp from "./components/Sign In/SignUp";
 import SignIn from "./components/SignIn/SignIn";
+import MyProfile from "./components/MyProfile";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<Login LoginPage={<SignUp/>}/>}/>
           <Route path="/SignIn" element={<Login LoginPage={<SignIn/>}/>}/>
           <Route path="/SignUp" element={<Login LoginPage={<SignUp/>}/>}/>
+          <Route path="/Profile" element={<MyProfile />}/>
         </Routes>
       </Router>
     </div>

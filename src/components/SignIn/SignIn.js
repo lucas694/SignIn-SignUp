@@ -4,6 +4,8 @@ import {TfiArrowCircleLeft} from "react-icons/tfi";
 import BtnVariant from "../Buttons/Btn-Variant";
 import {FaFacebook, FaGoogle} from "react-icons/fa";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {changeUser} from "../../redux/userSlice";
 
 
 
@@ -11,8 +13,10 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
+    dispatch(changeUser({email, password}));
     e.preventDefault();
 
     setError("")
@@ -29,7 +33,8 @@ const SignIn = () => {
       setError("A senha Precisa ter ao menos 6 Dígitos")
       return
     }
-  }
+
+    }
   return(
     <div className={"SignInContainer"}>
       <div className={"HeaderSec"}>
@@ -72,10 +77,10 @@ const SignIn = () => {
           </div>
           {error && <p className={"error"}>{error}</p>}
           <div className={"BtnSec"}>
-            <BtnVariant className={"Btn-SignIn"}
-                        btnText={"Sign In"}
-                        onClick={handleSubmit}
-            />
+              <BtnVariant className={"Btn-SignIn"}
+                          btnText={"Sign In"}
+                          onClick={handleSubmit}
+              />
             <a>Forgot Your Password ?</a>
           </div>
             <div className={"BtnSec"}>

@@ -5,6 +5,8 @@ import { FaFacebook } from "react-icons/fa";
 import BtnVariant from "../Buttons/Btn-Variant";
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import {changeUser} from "../../redux/userSlice";
+import {useDispatch, useSelector} from "react-redux";
 
 
 
@@ -14,8 +16,11 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
+
 
   const handleSubmit = (e) => {
+    dispatch(changeUser({email, password,name}));
     e.preventDefault();
 
     setError("")
