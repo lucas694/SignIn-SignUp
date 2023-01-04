@@ -1,6 +1,5 @@
 import "./Login.css"
 import loginImg from "../assets/login_img.png"
-import SignUp from "./Sign In/SignUp";
 
 
 const Login = (props) => {

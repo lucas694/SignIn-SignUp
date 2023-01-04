@@ -5,7 +5,7 @@ import BtnVariant from "../Buttons/Btn-Variant";
 import {FaFacebook, FaGoogle} from "react-icons/fa";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {changeUser} from "../../redux/userSlice";
+import {loginUser} from "../../redux/userSlice";
 
 
 
@@ -16,7 +16,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    dispatch(changeUser({email, password}));
+    dispatch(loginUser({email, password}));
     e.preventDefault();
 
     setError("")
@@ -44,7 +44,7 @@ const SignIn = () => {
             <TfiArrowCircleLeft className={"ArrowLeftIcon"}/>Back
           </button>
         </Link>
-        <p>I don't have an account! <Link to={"/SignUp"}><a>Sign Up</a></Link></p>
+        <p>I don't have an account! <Link to={"/Profile"}>Sign Up</Link></p>
       </div>
 
       <div className={"FormContent"}>

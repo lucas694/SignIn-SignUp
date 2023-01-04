@@ -5,7 +5,7 @@ import { FaFacebook } from "react-icons/fa";
 import BtnVariant from "../Buttons/Btn-Variant";
 import {useState} from "react";
 import {Link} from "react-router-dom";
-import {changeUser} from "../../redux/userSlice";
+import {createUser} from "../../redux/userSlice";
 import {useDispatch, useSelector} from "react-redux";
 
 
@@ -20,7 +20,7 @@ const SignUp = () => {
 
 
   const handleSubmit = (e) => {
-    dispatch(changeUser({email, password,name}));
+    dispatch(createUser({email, password,name}));
     e.preventDefault();
 
     setError("")
@@ -65,7 +65,7 @@ const SignUp = () => {
             <TfiArrowCircleLeft className={"ArrowLeftIcon"}/>Back
           </button>
         </Link>
-        <p>I have an account! <Link to={"/SignIn"}><a>Sign In</a></Link></p>
+        <p>I have an account! <Link to={"/SignIn"}>Sign In</Link></p>
       </div>
 
       <div className={"FormContent"}>
@@ -126,9 +126,9 @@ const SignUp = () => {
           </div>
           {error && <p className={"error"}>{error}</p>}
           <div className={"BtnSec"}>
-            <BtnVariant className={"Btn-SignIn"}
-                        btnText={"Sign In"}
-                        onClick={handleSubmit}/>
+            <Link to={"/SignIn"}>
+              <button className={"Btn-SignIn"} onClick={handleSubmit}>Sign Up</button>
+            </Link>
           </div>
         </form>
       </div>
