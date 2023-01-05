@@ -8,10 +8,28 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { FiHelpCircle } from "react-icons/fi";
 import { FiLogOut } from "react-icons/fi";
 import { BiMoon } from "react-icons/bi";
+import {useSelector, useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {logout} from "../redux/userSlice";
 
 
+const Sidebar = () => {
+  const userName = useSelector(state => state.user.name)
+  const Status = useSelector(state => state.user.isLogged)
 
-const Sidebar = (props) => {
+  const navegate = useNavigate();
+  const dispatch = useDispatch();
+
+  console.log(Status)
+
+  const logoutRequest = () => {
+    dispatch(logout())
+    alert("Você foi Deslogado, Clique em Logout e Faça Login Novamente! ")
+  }
+  const signInRequest = () => {
+    navegate("/SignIn")
+  }
+
   return(
       <div className={"SidebarContainer"}>
         <div className={"SideBarUp"}>
@@ -21,29 +39,29 @@ const Sidebar = (props) => {
             </div>
             <section className={"SidebarHeaderText"}>
               <span>hello!</span>
-              <h3 className={"SidebarUsername"}>{props.userName}</h3>
+              <h3 className={"SidebarUsername"}>{userName}</h3>
             </section>
           </div>
           <hr />
           <div className={"SidebarMain"}>
             <ul className={"SidebarList"}>
-              <li>
+              <li className={"listSidebar"}>
                 <FaHome className={"IconLi"}/>
                 <span className={"SpanLi"}>Home</span>
               </li>
-              <li>
+              <li className={"listSidebar"}>
                 <RxDashboard className={"IconLi"}/>
                 <span className={"SpanLi"}>Dashboard</span>
               </li>
-              <li>
+              <li className={"listSidebar"}>
                 <BsFillChatSquareDotsFill className={"IconLi"}/>
                 <span className={"SpanLi"}>Messages</span>
               </li>
-              <li>
+              <li className={"listSidebar"}>
                 <IoChatbubbles className={"IconLi"}/>
                 <span className={"SpanLi"}>Chat</span>
               </li>
-              <li>
+              <li className={"listSidebar"}>
                 <IoSettingsSharp className={"IconLi"}/>
                 <span className={"SpanLi"}>Settings</span>
               </li>
@@ -52,16 +70,18 @@ const Sidebar = (props) => {
         </div>
         <div className={"SidebarDown"}>
           <ul className={"SidebarList"}>
-            <li>
+            <li className={"listSidebar"}>
               <FiHelpCircle className={"IconLi"}/>
               <span className={"SpanLi"}>Help Center</span>
             </li>
             <li>
-              <FiLogOut className={"IconLi"}/>
-              <span className={"SpanLi"}>Log Out</span>
+              <button onClick={Status ? logoutRequest : signInRequest} className={"listSidebar"}>
+                <FiLogOut className={"IconLi"}/>
+                <span className={"SpanLi"}>Log Out</span>
+              </button>
             </li>
             <hr/>
-            <li>
+            <li className={"listSidebar"}>
               <BiMoon className={"IconLi"}/>
               <span className={"SpanLi"}>Nighmode</span>
             </li>

@@ -4,9 +4,9 @@ import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import BtnVariant from "../Buttons/Btn-Variant";
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {createUser} from "../../redux/userSlice";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 
 
 
@@ -17,6 +17,8 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
+  const navegate = useNavigate();
+
 
 
   const handleSubmit = (e) => {
@@ -30,29 +32,21 @@ const SignUp = () => {
       email,
       password,
     }
-    if(name == ""){
-      setError("Escreva seu nome")
-      return
-    }
-    if(email == ""){
-      setError("Preencha seu E-mail")
-      return
-    }
-    if(password == ""){
-      setError("Preencha sua Senha")
-      return
-    }
-    if(password.length < 6){
-      setError("A senha Precisa ter ao menos 6 Dígitos")
-      return
-    }
-    if(confirmPassword == ""){
-      setError("Confirme sua Senha")
-      return
-    }
-    if(password !== confirmPassword){
-      setError("As senhas precisam ser iguais")
-      return
+
+    if(name === ""){
+      return setError("Escreva seu nome")
+    }else if(email === ""){
+      return setError("Preencha seu E-mail")
+    }else if(password === ""){
+      return setError("Preencha sua Senha")
+    }else if(password.length < 6){
+      return setError("A senha Precisa ter ao menos 6 Dígitos")
+    }else if(confirmPassword === ""){
+      return setError("Confirme sua Senha")
+    }else if(password !== confirmPassword){
+      return setError("As senhas precisam ser iguais")
+    } else{
+      return navegate("/SignIn")
     }
     console.log(user)
   }
@@ -126,9 +120,10 @@ const SignUp = () => {
           </div>
           {error && <p className={"error"}>{error}</p>}
           <div className={"BtnSec"}>
-            <Link to={"/SignIn"}>
-              <button className={"Btn-SignIn"} onClick={handleSubmit}>Sign Up</button>
-            </Link>
+            <BtnVariant className={"Btn-SignIn"}
+                        btnText={"Sign Up"}
+                        onClick={handleSubmit}
+            />
           </div>
         </form>
       </div>

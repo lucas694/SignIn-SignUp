@@ -3,7 +3,7 @@ import {useState} from "react";
 import {TfiArrowCircleLeft} from "react-icons/tfi";
 import BtnVariant from "../Buttons/Btn-Variant";
 import {FaFacebook, FaGoogle} from "react-icons/fa";
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {loginUser} from "../../redux/userSlice";
 
@@ -15,23 +15,22 @@ const SignIn = () => {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
 
+  const navegate = useNavigate();
+
   const handleSubmit = (e) => {
     dispatch(loginUser({email, password}));
     e.preventDefault();
 
     setError("")
 
-    if(email == ""){
-      setError("Preencha seu E-mail")
-      return
-    }
-    if(password == ""){
-      setError("Preencha sua Senha")
-      return
-    }
-    if(password.length < 6){
-      setError("A senha Precisa ter ao menos 6 Dígitos")
-      return
+    if(email === ""){
+      return setError("Preencha seu E-mail")
+    } else if(password === ""){
+      return setError("Preencha sua Senha")
+    } else if(password.length < 6){
+      return setError("A senha Precisa ter ao menos 6 Dígitos")
+    } else {
+      return navegate("/Profile")
     }
 
     }
@@ -44,7 +43,7 @@ const SignIn = () => {
             <TfiArrowCircleLeft className={"ArrowLeftIcon"}/>Back
           </button>
         </Link>
-        <p>I don't have an account! <Link to={"/Profile"}>Sign Up</Link></p>
+        <p>I don't have an account! <Link to={"/SignUp"}>Sign Up</Link></p>
       </div>
 
       <div className={"FormContent"}>

@@ -30,7 +30,7 @@ hr{
 .SidebarList{
     @apply flex flex-col mt-4
 }
-.SidebarList li{
+.listSidebar{
     @apply flex items-center py-2.5 px-3 justify-center cursor-pointer
     md:justify-start
 }
