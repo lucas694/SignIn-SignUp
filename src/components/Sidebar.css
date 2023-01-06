@@ -4,7 +4,7 @@
     md:w-64 md:px-6 md:py-4
 }
 .SidebarHeader{
-    @apply flex flex-col items-center py-2
+    @apply flex flex-col items-center py-2 flex
     md:flex-row md:py-4
 }
 .SidebarHeaderText{

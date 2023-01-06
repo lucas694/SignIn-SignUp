@@ -1,7 +1,5 @@
 import "./MyProfile.css"
-import {useSelector} from "react-redux";
 import Sidebar from "./Sidebar";
-
 
 const MyProfile = () =>{
   return(

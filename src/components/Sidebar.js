@@ -1,5 +1,6 @@
 import "./Sidebar.css"
 import female from "../assets/userFemale.png"
+//icons
 import { FaHome } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
 import { BsFillChatSquareDotsFill } from "react-icons/bs";
@@ -8,6 +9,7 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { FiHelpCircle } from "react-icons/fi";
 import { FiLogOut } from "react-icons/fi";
 import { BiMoon } from "react-icons/bi";
+//
 import {useSelector, useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {logout} from "../redux/userSlice";
@@ -16,20 +18,17 @@ import {logout} from "../redux/userSlice";
 const Sidebar = () => {
   const userName = useSelector(state => state.user.name)
   const Status = useSelector(state => state.user.isLogged)
-
   const navegate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log(Status)
+  console.log(Status ? "Logado" : "Deslogado")
 
   const logoutRequest = () => {
     dispatch(logout())
-    alert("Você foi Deslogado, Clique em Logout e Faça Login Novamente! ")
   }
   const signInRequest = () => {
     navegate("/SignIn")
   }
-
   return(
       <div className={"SidebarContainer"}>
         <div className={"SideBarUp"}>
@@ -45,25 +44,35 @@ const Sidebar = () => {
           <hr />
           <div className={"SidebarMain"}>
             <ul className={"SidebarList"}>
-              <li className={"listSidebar"}>
-                <FaHome className={"IconLi"}/>
-                <span className={"SpanLi"}>Home</span>
+              <li>
+                <button className={"listSidebar"} onClick={signInRequest}>
+                  <FaHome className={"IconLi"}/>
+                  <span className={"SpanLi"}>Home</span>
+                </button>
               </li>
-              <li className={"listSidebar"}>
-                <RxDashboard className={"IconLi"}/>
-                <span className={"SpanLi"}>Dashboard</span>
+              <li>
+                <button className={"listSidebar"}>
+                  <RxDashboard className={"IconLi"}/>
+                  <span className={"SpanLi"}>Dashboard</span>
+                </button>
               </li>
-              <li className={"listSidebar"}>
-                <BsFillChatSquareDotsFill className={"IconLi"}/>
-                <span className={"SpanLi"}>Messages</span>
+              <li>
+                <button className={"listSidebar"}>
+                  <BsFillChatSquareDotsFill className={"IconLi"}/>
+                  <span className={"SpanLi"}>Messages</span>
+                </button>
               </li>
-              <li className={"listSidebar"}>
-                <IoChatbubbles className={"IconLi"}/>
-                <span className={"SpanLi"}>Chat</span>
+              <li>
+                <button className={"listSidebar"}>
+                  <IoChatbubbles className={"IconLi"}/>
+                  <span className={"SpanLi"}>Chat</span>
+                </button>
               </li>
-              <li className={"listSidebar"}>
-                <IoSettingsSharp className={"IconLi"}/>
-                <span className={"SpanLi"}>Settings</span>
+              <li>
+                <button className={"listSidebar"}>
+                  <IoSettingsSharp className={"IconLi"}/>
+                  <span className={"SpanLi"}>Settings</span>
+                </button>
               </li>
             </ul>
           </div>
@@ -75,7 +84,7 @@ const Sidebar = () => {
               <span className={"SpanLi"}>Help Center</span>
             </li>
             <li>
-              <button onClick={Status ? logoutRequest : signInRequest} className={"listSidebar"}>
+              <button onClick={logoutRequest} className={"listSidebar"}>
                 <FiLogOut className={"IconLi"}/>
                 <span className={"SpanLi"}>Log Out</span>
               </button>

@@ -1,13 +1,14 @@
 import "./SignUp.css"
+//icons
 import { TfiArrowCircleLeft } from "react-icons/tfi";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+//
 import BtnVariant from "../Buttons/Btn-Variant";
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {createUser} from "../../redux/userSlice";
 import {useDispatch} from "react-redux";
-
 
 
 const SignUp = () => {
@@ -18,8 +19,6 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navegate = useNavigate();
-
-
 
   const handleSubmit = (e) => {
     dispatch(createUser({email, password,name}));
@@ -78,7 +77,7 @@ const SignUp = () => {
         <form className={"SignUpForm"} onSubmit={handleSubmit}>
           <div className={"FormSections"}>
             <label>
-              <span>Name:</span>
+              <span>First Name:</span>
               <input type="name"
                      name="name"
                      required

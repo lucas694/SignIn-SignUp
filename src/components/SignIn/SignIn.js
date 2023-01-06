@@ -6,38 +6,41 @@ import {FaFacebook, FaGoogle} from "react-icons/fa";
 import {Link,useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {loginUser} from "../../redux/userSlice";
-
-
+import {useSelector} from "react-redux";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
-
   const navegate = useNavigate();
 
-  const handleSubmit = (e) => {
-    dispatch(loginUser({email, password}));
-    e.preventDefault();
+  const emailCadastrado = useSelector((state) => state.user.email);
+  const senhaCadastrada = useSelector((state) => state.user.password);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setError("")
 
-    if(email === ""){
+    if (email === ""){
       return setError("Preencha seu E-mail")
-    } else if(password === ""){
-      return setError("Preencha sua Senha")
-    } else if(password.length < 6){
-      return setError("A senha Precisa ter ao menos 6 Dígitos")
-    } else {
-      return navegate("/Profile")
     }
-
+    else if (password === ""){
+      return setError("Preencha sua Senha")
+    }
+    else if (password.length < 6){
+      return setError("A senha Precisa ter ao menos 6 Dígitos")
+    }
+    else if(email === emailCadastrado && password === senhaCadastrada){
+      return dispatch(loginUser({email, password})) && navegate("/Profile");
+    }
+    else {
+      return setError("Email ou Senha Inválidos")
+    }
     }
   return(
     <div className={"SignInContainer"}>
       <div className={"HeaderSec"}>
-
         <Link to={"/SignUp"}>
           <button className={"Btn-Back"}>
             <TfiArrowCircleLeft className={"ArrowLeftIcon"}/>Back
@@ -80,7 +83,7 @@ const SignIn = () => {
                           btnText={"Sign In"}
                           onClick={handleSubmit}
               />
-            <a>Forgot Your Password ?</a>
+            <a href={"#"}>Forgot Your Password ?</a>
           </div>
             <div className={"BtnSec"}>
               <BtnVariant className={"Btn-Google"}
