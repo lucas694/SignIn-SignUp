@@ -21,6 +21,7 @@ const Sidebar = () => {
   const navegate = useNavigate();
   const dispatch = useDispatch();
 
+
   console.log(Status ? "Logado" : "Deslogado")
 
   const logoutRequest = () => {
@@ -79,9 +80,11 @@ const Sidebar = () => {
         </div>
         <div className={"SidebarDown"}>
           <ul className={"SidebarList"}>
-            <li className={"listSidebar"}>
-              <FiHelpCircle className={"IconLi"}/>
-              <span className={"SpanLi"}>Help Center</span>
+            <li >
+              <button className={"listSidebar"}>
+                <FiHelpCircle className={"IconLi"}/>
+                <span className={"SpanLi"}>Help Center</span>
+              </button>
             </li>
             <li>
               <button onClick={logoutRequest} className={"listSidebar"}>
@@ -90,9 +93,11 @@ const Sidebar = () => {
               </button>
             </li>
             <hr/>
-            <li className={"listSidebar"}>
-              <BiMoon className={"IconLi"}/>
-              <span className={"SpanLi"}>Nighmode</span>
+            <li>
+              <button className={"listSidebar"}>
+                <BiMoon className={"IconLi"}/>
+                <span className={"SpanLi"}>Nighmode</span>
+              </button>
             </li>
           </ul>
         </div>

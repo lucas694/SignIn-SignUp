@@ -9,13 +9,14 @@
 }
 .SidebarHeaderText{
     @apply flex flex-col px-0 items-center mt-1
-    md:items-start md:px-2 md:mt-0;
+    md:items-start md:px-2 md:mt-0 md:w-full max-w-0
 }
 .SidebarHeaderText span{
     @apply text-xs font-semibold mb-0
 }
 .SidebarUsername{
-    @apply font-semibold text-base
+    @apply font-semibold text-[14px] text-center mt-2
+    md:mt-0 md:text-left
 }
 .userBox{
     @apply w-[3.5em] h-[3.5em] bg-pink-200 rounded-[10px] border border-gray-400
